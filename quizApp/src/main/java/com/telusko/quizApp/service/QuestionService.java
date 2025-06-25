@@ -17,4 +17,8 @@ public class QuestionService {
     public List<Question> getAllQuestions() {
          return questionRepository.findAll();
     }
+
+    public List<Question> getQuestionByCategory(String category) {
+        return questionRepository.findByCategory(category);
+    }
 }
