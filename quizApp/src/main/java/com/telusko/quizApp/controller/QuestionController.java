@@ -3,13 +3,15 @@ package com.telusko.quizApp.controller;
 import com.telusko.quizApp.Question;
 import com.telusko.quizApp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
+import static java.util.Optional.empty;
+import static org.springframework.util.ClassUtils.isPresent;
 
 @RestController
 @RequestMapping("question")
@@ -27,9 +29,18 @@ public class QuestionController {
         return questionService.getQuestionByCategory(category);
     }
 
-    @GetMapping("id/{id}")
-    public Optional<Question> getQuestionById(@PathVariable Integer id){
-        return questionService.getQuestionById(id);
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<?> getQuestionById(@PathVariable Integer id) {
+        Optional<Question> question = questionService.getQuestionById(id);
+
+        if (question.isPresent()) {
+            return ResponseEntity.ok(question.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Question with ID " + id + " not found");
+        }
     }
+
+
 
 }
