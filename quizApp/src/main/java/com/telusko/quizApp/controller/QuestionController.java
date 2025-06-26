@@ -2,7 +2,6 @@ package com.telusko.quizApp.controller;
 
 import com.telusko.quizApp.Question;
 import com.telusko.quizApp.service.QuestionService;
-import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("question")
@@ -26,4 +26,10 @@ public class QuestionController {
     public List<Question> getQuestionsByCategory(@PathVariable String category){
         return questionService.getQuestionByCategory(category);
     }
+
+    @GetMapping("id/{id}")
+    public Optional<Question> getQuestionById(@PathVariable Integer id){
+        return questionService.getQuestionById(id);
+    }
+
 }
