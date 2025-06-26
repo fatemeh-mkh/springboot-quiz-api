@@ -20,8 +20,8 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
     @GetMapping("allQuestions")
-    public List<Question> getAllQuestions(){
-        return questionService.getAllQuestions();
+    public ResponseEntity<List<Question>> getAllQuestions(){
+        return new ResponseEntity<>(questionService.getAllQuestions(),HttpStatus.OK);
     }
 
     @GetMapping("category/{category}")
