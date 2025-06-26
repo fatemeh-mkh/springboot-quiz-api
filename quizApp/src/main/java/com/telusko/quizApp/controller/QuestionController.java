@@ -46,4 +46,9 @@ public class QuestionController {
         return questionService.addQuestion(question);
     }
 
+    @PostMapping("addQuestionByParam")
+    public ResponseEntity<String> addQuestionWithParam(@RequestBody Question question) {
+        questionService.insertCustom(question);
+        return ResponseEntity.ok("Question inserted successfully!");
+    }
 }

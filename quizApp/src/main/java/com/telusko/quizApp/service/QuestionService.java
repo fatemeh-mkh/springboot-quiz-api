@@ -31,4 +31,18 @@ public class QuestionService {
        questionRepository.save(question);
        return "Success";
     }
+
+    public void insertCustom(Question question) {
+
+        questionRepository.insertQuestion(
+                question.getQuestion_title(),
+                question.getOption1(),
+                question.getOption2(),
+                question.getOption3(),
+                question.getOption4(),
+                question.getRight_answer(),
+                question.getDifficulty_level(),
+                question.getCategory()
+        );
+    }
 }
