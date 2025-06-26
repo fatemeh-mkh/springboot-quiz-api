@@ -45,4 +45,13 @@ public class QuestionService {
                 question.getCategory()
         );
     }
+
+    public boolean deleteQuestion(Integer id) {
+        if (questionRepository.existsById(id)) {
+            questionRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

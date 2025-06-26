@@ -31,5 +31,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
                         @Param("rightAnswer") String rightAnswer,
                         @Param("difficultyLevel") String difficultyLevel,
                         @Param("category") String category);
+
 }
 

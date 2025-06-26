@@ -51,4 +51,17 @@ public class QuestionController {
         questionService.insertCustom(question);
         return ResponseEntity.ok("Question inserted successfully!");
     }
+
+
+    @DeleteMapping("deleteQuestion/{id}")
+    public ResponseEntity<?> deleteQuestionById(@PathVariable Integer id) {
+        boolean Qdelete=questionService.deleteQuestion(id);
+
+        if(Qdelete){
+            return ResponseEntity.status(HttpStatus.OK).body("Question with ID " + id + " deleted successfully!");
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Question with ID " + id + " not found");
+        }
+    }
 }
