@@ -41,6 +41,9 @@ public class QuestionController {
         }
     }
 
-
+    @PostMapping("addQuestion")
+    public String addQuestion(@RequestBody Question question){
+        return questionService.addQuestion(question);
+    }
 
 }

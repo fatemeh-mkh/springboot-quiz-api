@@ -27,7 +27,8 @@ public class QuestionService {
         return questionRepository.findQuestionById(id);
     }
 
-//    public String addQuestion(Question question) {
-//
-//    }
+    public String addQuestion(Question question) {
+       questionRepository.save(question);
+       return "Success";
+    }
 }
