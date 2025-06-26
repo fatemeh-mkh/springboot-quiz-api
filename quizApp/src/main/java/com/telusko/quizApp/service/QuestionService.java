@@ -4,8 +4,11 @@ import com.telusko.quizApp.Question;
 
 import com.telusko.quizApp.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,10 +22,23 @@ public class QuestionService {
          return questionRepository.findAll();
     }
 
-    public List<Question> getQuestionByCategory(String category) {
-        return questionRepository.findByCategory(category);
-    }
+//-----------------------------------------------------------------------------------------------------
+public ResponseEntity<List<Question>> getQuestionByCategory(String category) {
+    try {
+        List<Question> questions = questionRepository.findByCategory(category);
 
+        if (questions == null || questions.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        else {
+            return new ResponseEntity<>(questions, HttpStatus.OK);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+    //-------------------------------------------------------------------------------------------------
     public Optional<Question> getQuestionById(Integer id) {
         return questionRepository.findQuestionById(id);
     }

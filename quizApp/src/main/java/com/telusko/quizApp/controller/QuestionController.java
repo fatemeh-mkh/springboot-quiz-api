@@ -25,7 +25,7 @@ public class QuestionController {
     }
 
     @GetMapping("category/{category}")
-    public List<Question> getQuestionsByCategory(@PathVariable String category){
+    public ResponseEntity<List<Question>>getQuestionsByCategory(@PathVariable String category){
         return questionService.getQuestionByCategory(category);
     }
 
@@ -64,4 +64,6 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Question with ID " + id + " not found");
         }
     }
+
+
 }
