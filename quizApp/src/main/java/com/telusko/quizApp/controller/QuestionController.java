@@ -1,6 +1,6 @@
 package com.telusko.quizApp.controller;
 
-import com.telusko.quizApp.Question;
+import com.telusko.quizApp.model.Question;
 import com.telusko.quizApp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
-import static java.util.Optional.empty;
-import static org.springframework.util.ClassUtils.isPresent;
 
 @RestController
 @RequestMapping("question")
@@ -64,6 +61,8 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Question with ID " + id + " not found");
         }
     }
+
+
 
 
 }

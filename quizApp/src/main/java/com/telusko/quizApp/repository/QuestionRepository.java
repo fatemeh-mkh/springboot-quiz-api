@@ -1,6 +1,6 @@
 package com.telusko.quizApp.repository;
 
-import com.telusko.quizApp.Question;
+import com.telusko.quizApp.model.Question;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -32,5 +32,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
                         @Param("difficultyLevel") String difficultyLevel,
                         @Param("category") String category);
 
+    @Query(value = "SELECT * FROM question q where q.category=:category ORDER BY Random() LIMIT :numQ",nativeQuery = true)
+    List<Question> findRandomQuestionByCategory(String category, int numQ);
 }
 
