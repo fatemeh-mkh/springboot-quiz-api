@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>748</IntrospectionStateNumber>
+      <IntrospectionStateNumber>774</IntrospectionStateNumber>
       <ServerVersion>16.3</ServerVersion>
       <StartupTime>1750752413</StartupTime>
       <TimeZones>true ACDT
@@ -809,7 +801,7 @@ false Zulu
 14643||10|C|G
 14643||-9223372036854775808|U|G
 14643||10|U|G</Grants>
-      <IntrospectionStateNumber>748</IntrospectionStateNumber>
+      <IntrospectionStateNumber>774</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4242,8 +4234,8 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>748</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-06-25.01:11:50</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>774</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-06-27.18:02:45</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4256,13 +4248,55 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="266" parent="264" name="question">
+    <sequence id="266" parent="264" name="question_seq">
+      <ObjectId>16463</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>759</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="267" parent="264" name="question_tab_seq">
+      <ObjectId>16414</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>750</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="268" parent="264" name="quiz_id_seq">
+      <ObjectId>16465</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>769</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="269" parent="264" name="question">
       <ObjectId>16399</ObjectId>
-      <StateNumber>743</StateNumber>
+      <StateNumber>771</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="267" parent="266" name="id">
+    <table id="270" parent="264" name="question_tab">
+      <ObjectId>16407</ObjectId>
+      <StateNumber>749</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="271" parent="264" name="quiz">
+      <ObjectId>16466</ObjectId>
+      <StateNumber>772</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="272" parent="264" name="quiz_questions">
+      <ObjectId>16471</ObjectId>
+      <StateNumber>771</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="273" parent="269" name="id">
       <DefaultExpression>nextval(&apos;question_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4271,77 +4305,207 @@ false Zulu
       <SequenceId>16398</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="268" parent="266" name="question_title">
+    <column id="274" parent="269" name="question_title">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>743</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
+      <StateNumber>757</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="269" parent="266" name="option1">
+    <column id="275" parent="269" name="option1">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>743</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
+      <StateNumber>753</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="270" parent="266" name="option2">
+    <column id="276" parent="269" name="option2">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>743</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
+      <StateNumber>754</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="271" parent="266" name="option3">
+    <column id="277" parent="269" name="option3">
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>743</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
+      <StateNumber>755</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="272" parent="266" name="option4">
+    <column id="278" parent="269" name="option4">
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StateNumber>743</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
+      <StateNumber>756</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="273" parent="266" name="right_answer">
+    <column id="279" parent="269" name="right_answer">
       <NotNull>1</NotNull>
       <Position>7</Position>
-      <StateNumber>743</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
+      <StateNumber>758</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="274" parent="266" name="difficulty_level">
+    <column id="280" parent="269" name="difficulty_level">
       <NotNull>1</NotNull>
       <Position>8</Position>
-      <StateNumber>743</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
+      <StateNumber>752</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="275" parent="266" name="category">
+    <column id="281" parent="269" name="category">
       <NotNull>1</NotNull>
       <Position>9</Position>
-      <StateNumber>743</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
+      <StateNumber>751</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <index id="276" parent="266" name="question_pkey">
+    <index id="282" parent="269" name="question_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16405</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>743</StateNumber>
+      <StateNumber>758</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="277" parent="266" name="question_pkey">
+    <key id="283" parent="269" name="question_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16406</ObjectId>
       <Primary>1</Primary>
       <StateNumber>743</StateNumber>
       <UnderlyingIndexId>16405</UnderlyingIndexId>
     </key>
+    <column id="284" parent="270" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="285" parent="270" name="category">
+      <Position>2</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="286" parent="270" name="difficulty_level">
+      <Position>3</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="287" parent="270" name="option1">
+      <Position>4</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="288" parent="270" name="option2">
+      <Position>5</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="289" parent="270" name="option3">
+      <Position>6</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="290" parent="270" name="option4">
+      <Position>7</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="291" parent="270" name="question_title">
+      <Position>8</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="292" parent="270" name="right_answer">
+      <Position>9</Position>
+      <StateNumber>749</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="293" parent="270" name="question_tab_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16412</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>749</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="294" parent="270" name="question_tab_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16413</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>749</StateNumber>
+      <UnderlyingIndexId>16412</UnderlyingIndexId>
+    </key>
+    <column id="295" parent="271" name="id">
+      <IdentityKind>by-default</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>769</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16465</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="296" parent="271" name="title">
+      <Position>2</Position>
+      <StateNumber>769</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="297" parent="271" name="quiz_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16469</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>769</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="298" parent="271" name="quiz_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16470</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>769</StateNumber>
+      <UnderlyingIndexId>16469</UnderlyingIndexId>
+    </key>
+    <column id="299" parent="272" name="quiz_id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>770</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="300" parent="272" name="questions_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>770</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="301" parent="272" name="fkcgp9e1c6ww3t383aui4w8feae">
+      <ColNames>quiz_id</ColNames>
+      <ObjectId>16479</ObjectId>
+      <StateNumber>772</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16466</RefTableId>
+    </foreign-key>
+    <foreign-key id="302" parent="272" name="fkpmfvwer12y1nrjc0efm04dq16">
+      <ColNames>questions_id</ColNames>
+      <ObjectId>16474</ObjectId>
+      <StateNumber>771</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16399</RefTableId>
+    </foreign-key>
   </database-model>
 </dataSource>

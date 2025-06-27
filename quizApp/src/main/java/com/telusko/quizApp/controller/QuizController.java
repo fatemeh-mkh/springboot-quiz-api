@@ -2,7 +2,9 @@ package com.telusko.quizApp.controller;
 
 import com.telusko.quizApp.model.Question;
 import com.telusko.quizApp.model.QuestionDto;
+import com.telusko.quizApp.model.Response;
 import com.telusko.quizApp.service.QuizService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,5 +31,11 @@ public class QuizController {
     @GetMapping("get/{id}")
     public ResponseEntity<List<QuestionDto>> getQuizQuestions(@PathVariable Integer id) {
         return quizService.getQuizService(id);
+    }
+
+    @PostMapping("submit/{id}")
+    public ResponseEntity<Integer> sendRightAnwser(@PathVariable Integer id ,@RequestBody List<Response> responses) {
+
+        return quizService.calculateResult(id,responses);
     }
 }
